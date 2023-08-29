@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fruit Tracker - Update Status</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        div,
+        pre {
+            text-align: center;
+            color: #333;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        a:hover {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Fruit Tracker</h1>
+    </header>
+    <main>
+        <!-- Update Section -->
+        <div>
+            <button onclick="goBack()">Go Back to Home</button>
+            <h2>Update Status</h2>
+            <label for="updateID">Fruit ID: </label>
+            <select id="updateID">
+                <option value="apple_1">Apple 1</option>
+                <option value="apple_2">Apple 2</option>
+                <option value="orange_1">Orange 1</option>
+            </select>
+            <label for="status">Status: </label>
+            <input type="text" id="status">
+            <label for="location">Location: </label>
+            <input type="text" id="location">
+            <label for="quality">Quality: </label>
+            <input type="text" id="quality">
+            <label for="timestamp">Timestamp: </label>
+            <input type="text" id="timestamp">
+            <button onclick="updateFruitStatus()">Update Status</button>
+        </div>
+
+        <h2>Update Feedback</h2>
+        <pre id="updateFeedback"></pre>
+
+        <script src="script.js">
+        </script>
+        <script>
+            function goBack() {
+              window.location.href = 'index.html';
+         }
+        </script>
+
+    </main>
+</body>
+
+</html>

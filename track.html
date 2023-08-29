@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fruit Tracker - Track</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        div,
+        pre {
+            text-align: center;
+            color: #333;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        a:hover {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Fruit Tracker</h1>
+    </header>
+    <main>
+        <!-- Tracking Section -->
+        <div>
+            <button onclick="goBack()">Go Back to Home</button>
+            <label for="fruitID">Fruit ID: </label>
+            <select id="fruitID">
+                <option value="apple_1">Apple 1</option>
+                <option value="apple_2">Apple 2</option>
+                <option value="orange_1">Orange 1</option>
+            </select>
+            <button onclick="trackFruit()">Track</button>
+        </div>
+
+        <h2>Fruit Status</h2>
+        <pre id="fruitStatus"></pre>
+
+
+        <script>
+            async function trackFruit() {
+                const fruitID = document.getElementById('fruitID').value;
+                const fruitStatusElement = document.getElementById('fruitStatus');
+
+                try {
+                    const response = await axios.get(`http://127.0.0.1:5000/track?id=${fruitID}`);
+                    const data = response.data;
+                    fruitStatusElement.textContent = JSON.stringify(data, null, 4);
+                } catch (error) {
+                    fruitStatusElement.textContent = 'Error: ' + error;
+                }
+            }
+
+
+        </script>
+        
+        <script>
+            function goBack() {
+              window.location.href = 'index.html';
+         }
+        </script>
+
+    </main>
+</body>
+
+</html>
